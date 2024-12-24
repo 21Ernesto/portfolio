@@ -1,20 +1,39 @@
 <template>
   <div class="min-h-screen bg-gradient-to-br from-blue-50 to-orange-50 text-gray-800">
     <header class="fixed w-full bg-white bg-opacity-90 backdrop-blur-sm z-10 shadow-md">
-      <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-        <!-- Logo de la agencia -->
-        <h1 class="text-2xl font-bold tracking-wide text-blue-600 hover:text-blue-700 transition duration-300">
-          Nubex
-        </h1>
-        <!-- Navegación -->
-        <nav>
-          <ul class="flex space-x-8">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4">
+        <div class="flex justify-between items-center">
+          <!-- Logo de la agencia -->
+          <h1 class="text-2xl font-bold tracking-wide text-blue-600 hover:text-blue-700 transition duration-300">
+            Nubex
+          </h1>
+          <!-- Botón de menú para móviles -->
+          <button @click="toggleMenu" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none">
+            <MenuIcon v-if="!isMenuOpen" class="h-6 w-6" />
+            <XIcon v-else class="h-6 w-6" />
+          </button>
+          <!-- Navegación para pantallas medianas y grandes -->
+          <nav class="hidden md:block">
+            <ul class="flex space-x-8">
+              <li v-for="(section, index) in sections" :key="index">
+                <a :href="section.href"
+                  class="text-sm font-medium uppercase tracking-wider hover:text-orange-500 transition duration-300 relative group">
+                  {{ section.name }}
+                  <span
+                    class="absolute left-0 bottom-0 w-0 h-0.5 bg-orange-500 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <!-- Menú móvil -->
+        <nav :class="{'hidden': !isMenuOpen, 'block': isMenuOpen}" class="md:hidden mt-4">
+          <ul class="flex flex-col space-y-4">
             <li v-for="(section, index) in sections" :key="index">
               <a :href="section.href"
-                class="text-sm font-medium uppercase tracking-wider hover:text-orange-500 transition duration-300 relative group">
+                class="text-sm font-medium uppercase tracking-wider hover:text-orange-500 transition duration-300 block py-2"
+                @click="closeMenu">
                 {{ section.name }}
-                <span
-                  class="absolute left-0 bottom-0 w-0 h-0.5 bg-orange-500 transition-all duration-300 group-hover:w-full"></span>
               </a>
             </li>
           </ul>
@@ -31,7 +50,7 @@
       </TransitionGroup>
     </main>
 
-    <footer class="bg-blue-600 text-white py-8">
+    <footer class="border-t-2 border-blue-500 text-black py-4">
       <div class="max-w-6xl mx-auto px-6 text-center">
         <p>&copy; {{ new Date().getFullYear() }} Nubex. Todos los derechos reservados.</p>
       </div>
@@ -43,6 +62,7 @@
 import { ref, onMounted } from 'vue'
 import type { Ref } from 'vue'
 import { TransitionGroup } from 'vue'
+import { MenuIcon, XIcon } from 'lucide-vue-next'
 import AboutSection from '@/components/AboutSection.vue'
 import ContactSection from '@/components/ContactSection.vue'
 import HomeSection from '@/components/HomeSection.vue'
@@ -59,6 +79,16 @@ const sections: Ref<Section[]> = ref([
   { name: 'Sobre Mí', href: '#sobre-mi' },
   { name: 'Contacto', href: '#contacto' }
 ])
+
+const isMenuOpen = ref(false)
+
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value
+}
+
+const closeMenu = () => {
+  isMenuOpen.value = false
+}
 
 onMounted(() => {
   const observer = new IntersectionObserver((entries) => {
@@ -99,19 +129,16 @@ section.in-view {
 }
 
 .section-padding {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  @apply py-16;
 }
 
 @keyframes float {
   0% {
     transform: translateY(0px);
   }
-
   50% {
     transform: translateY(-10px);
   }
-
   100% {
     transform: translateY(0px);
   }
@@ -120,34 +147,4 @@ section.in-view {
 .float-animation {
   animation: float 4s ease-in-out infinite;
 }
-
-.text-blue-600 {
-  color: #2563eb;
-}
-
-.hover\:text-blue-700:hover {
-  color: #1d4ed8;
-}
-
-.text-orange-500 {
-  color: #f97316;
-}
-
-.bg-blue-600 {
-  background-color: #2563eb;
-}
-
-.from-blue-50 {
-  --tw-gradient-from: #eff6ff;
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(239, 246, 255, 0));
-}
-
-.to-orange-50 {
-  --tw-gradient-to: #fff7ed;
-}
-
-.bg-orange-500 {
-  background-color: #f97316;
-}
 </style>
-
