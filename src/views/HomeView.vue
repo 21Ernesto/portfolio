@@ -1,18 +1,25 @@
 <template>
   <div class="min-h-screen bg-white text-gray-800">
-    <header class="fixed w-full bg-white bg-opacity-90 backdrop-blur-sm z-10">
-      <nav class="max-w-5xl mx-auto px-4 py-4">
-        <ul class="flex justify-center space-x-8">
-          <li v-for="(section, index) in sections" :key="index">
-            <a :href="section.href"
-              class="text-sm uppercase tracking-wider hover:text-green-500 transition duration-300 relative group">
-              {{ section.name }}
-              <span
-                class="absolute left-0 bottom-0 w-0 h-0.5 bg-green-500 transition-all duration-300 group-hover:w-full"></span>
-            </a>
-          </li>
-        </ul>
-      </nav>
+    <header class="fixed w-full bg-white bg-opacity-90 backdrop-blur-sm z-10 shadow-sm">
+      <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
+        <!-- Nombre de la agencia -->
+        <h1 class="text-lg font-bold tracking-wide text-green-600">
+          Nubex
+        </h1>
+        <!-- Navegación -->
+        <nav>
+          <ul class="flex space-x-8">
+            <li v-for="(section, index) in sections" :key="index">
+              <a :href="section.href"
+                class="text-sm uppercase tracking-wider hover:text-green-500 transition duration-300 relative group">
+                {{ section.name }}
+                <span
+                  class="absolute left-0 bottom-0 w-0 h-0.5 bg-green-500 transition-all duration-300 group-hover:w-full"></span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
     <main class="pt-16">
