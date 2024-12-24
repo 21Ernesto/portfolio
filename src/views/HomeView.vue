@@ -29,10 +29,10 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { TransitionGroup } from 'vue'
-import AboutSection from '@/components/AboutSection.vue'
-import ContactSection from '@/components/ContactSection.vue'
-import HomeSection from '@/components/HomeSection.vue'
-import ProjectsSection from '@/components/ProjectsSection.vue'
+import AboutSection from '@/components/AboutSection'
+import ContactSection from '@/components/ContactSection'
+import HomeSection from '@/components/HomeSection'
+import ProjectsSection from '@/components/ProjectsSection'
 
 const sections = ref([
   { name: 'Inicio', href: '#inicio' },
