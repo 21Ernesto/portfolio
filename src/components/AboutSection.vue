@@ -4,18 +4,16 @@
       <h2 class="text-3xl font-light text-center text-gray-800 mb-16">Sobre Mí</h2>
       <div class="flex flex-col md:flex-row items-center gap-12">
         <div class="w-48 h-48 rounded-full overflow-hidden bg-gray-200">
-          <img src="https://cdn.icon-icons.com/icons2/1508/PNG/512/systemusers_104569.png" alt="Profile" class="w-full h-full object-cover">
+          <img src="https://cdn.icon-icons.com/icons2/1508/PNG/512/systemusers_104569.png" alt="Profile"
+            class="w-full h-full object-cover">
         </div>
         <div class="flex-1 space-y-6">
           <p class="text-gray-600 leading-relaxed">{{ about }}</p>
           <div>
             <h3 class="text-xl font-medium text-gray-800 mb-4">Habilidades</h3>
             <div class="flex flex-wrap gap-2">
-              <span 
-                v-for="skill in skills" 
-                :key="skill.name"
-                class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm"
-              >
+              <span v-for="skill in skills" :key="skill.name"
+                class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">
                 {{ skill.name }}
               </span>
             </div>
@@ -50,5 +48,8 @@ const skills = ref<Skill[]>([
   { name: 'SQLServer', level: 70, category: 'database' },
   { name: 'Tailwind CSS', level: 90, category: 'css' },
   { name: 'Bootstrap', level: 80, category: 'css' },
+  { name: 'C#', level: 43, category: 'backend' },
+  { name: 'ASP.NET', level: 23, category: 'fronend and backend' },
+
 ])
 </script>
