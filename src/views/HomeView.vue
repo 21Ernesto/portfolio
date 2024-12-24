@@ -26,15 +26,21 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import type { Ref } from 'vue'
 import { TransitionGroup } from 'vue'
 import AboutSection from '@/components/AboutSection.vue'
 import ContactSection from '@/components/ContactSection.vue'
 import HomeSection from '@/components/HomeSection.vue'
 import ProjectsSection from '@/components/ProjectsSection.vue'
 
-const sections = ref([
+interface Section {
+  name: string
+  href: string
+}
+
+const sections: Ref<Section[]> = ref([
   { name: 'Inicio', href: '#inicio' },
   { name: 'Proyectos', href: '#proyectos' },
   { name: 'Sobre Mí', href: '#sobre-mi' },
