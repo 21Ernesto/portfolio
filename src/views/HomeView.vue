@@ -1,9 +1,9 @@
 <template>
-  <div class="min-h-screen bg-white text-gray-800">
-    <header class="fixed w-full bg-white bg-opacity-90 backdrop-blur-sm z-10 shadow-sm">
-      <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
-        <!-- Nombre de la agencia -->
-        <h1 class="text-lg font-bold tracking-wide text-green-600">
+  <div class="min-h-screen bg-gradient-to-br from-blue-50 to-orange-50 text-gray-800">
+    <header class="fixed w-full bg-white bg-opacity-90 backdrop-blur-sm z-10 shadow-md">
+      <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+        <!-- Logo de la agencia -->
+        <h1 class="text-2xl font-bold tracking-wide text-blue-600 hover:text-blue-700 transition duration-300">
           Nubex
         </h1>
         <!-- Navegación -->
@@ -11,10 +11,10 @@
           <ul class="flex space-x-8">
             <li v-for="(section, index) in sections" :key="index">
               <a :href="section.href"
-                class="text-sm uppercase tracking-wider hover:text-green-500 transition duration-300 relative group">
+                class="text-sm font-medium uppercase tracking-wider hover:text-orange-500 transition duration-300 relative group">
                 {{ section.name }}
                 <span
-                  class="absolute left-0 bottom-0 w-0 h-0.5 bg-green-500 transition-all duration-300 group-hover:w-full"></span>
+                  class="absolute left-0 bottom-0 w-0 h-0.5 bg-orange-500 transition-all duration-300 group-hover:w-full"></span>
               </a>
             </li>
           </ul>
@@ -22,14 +22,20 @@
       </div>
     </header>
 
-    <main class="pt-16">
+    <main class="pt-20">
       <TransitionGroup name="fade-slide" tag="div" appear>
-        <HomeSection id="inicio" key="home" />
-        <ProjectsSection id="proyectos" key="projects" />
-        <AboutSection id="sobre-mi" key="about" />
-        <ContactSection id="contacto" key="contact" />
+        <HomeSection id="inicio" key="home" class="section-padding" />
+        <ProjectsSection id="proyectos" key="projects" class="section-padding" />
+        <AboutSection id="sobre-mi" key="about" class="section-padding" />
+        <ContactSection id="contacto" key="contact" class="section-padding" />
       </TransitionGroup>
     </main>
+
+    <footer class="bg-blue-600 text-white py-8">
+      <div class="max-w-6xl mx-auto px-6 text-center">
+        <p>&copy; {{ new Date().getFullYear() }} Nubex. Todos los derechos reservados.</p>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -92,6 +98,11 @@ section.in-view {
   transform: translateY(0);
 }
 
+.section-padding {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
 @keyframes float {
   0% {
     transform: translateY(0px);
@@ -109,4 +120,34 @@ section.in-view {
 .float-animation {
   animation: float 4s ease-in-out infinite;
 }
+
+.text-blue-600 {
+  color: #2563eb;
+}
+
+.hover\:text-blue-700:hover {
+  color: #1d4ed8;
+}
+
+.text-orange-500 {
+  color: #f97316;
+}
+
+.bg-blue-600 {
+  background-color: #2563eb;
+}
+
+.from-blue-50 {
+  --tw-gradient-from: #eff6ff;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(239, 246, 255, 0));
+}
+
+.to-orange-50 {
+  --tw-gradient-to: #fff7ed;
+}
+
+.bg-orange-500 {
+  background-color: #f97316;
+}
 </style>
+
