@@ -46,10 +46,11 @@ const about = ref(
 )
 
 const skills = ref<Skill[]>([
-  { name: 'Vue.js', level: 90, category: 'frontend' },
-  { name: 'React', level: 85, category: 'frontend' },
+  { name: 'Vue.js', level: 35, category: 'frontend' },
+  { name: 'React', level: 35, category: 'frontend' },
   { name: 'Ionic', level: 45, category: 'frontend' },
   { name: 'PHP', level: 75, category: 'backend' },
+  { name: 'Laravel', level: 75, category: 'frontend and backend' },
   { name: 'MySQL', level: 80, category: 'database' },
   { name: 'SQLServer', level: 70, category: 'database' },
   { name: 'Tailwind CSS', level: 90, category: 'css' },
