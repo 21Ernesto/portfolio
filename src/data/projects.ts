@@ -35,7 +35,7 @@ export const projects: Project[] = [
     image: "/YaJnopTseltal.png",
     technologies: ["Laravel", "Ionic", "MySql", "Tailwind CSS"],
     github: "",
-    demo: "https://manualtseltal.aldelim.org/"
+    demo: "https://play.google.com/store/apps/details?id=ya.jnop.tseltal"
   },
   {
     id: 5,
